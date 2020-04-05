@@ -4,7 +4,6 @@ use clap::{App, Arg, ArgMatches, SubCommand};
 use git2::{self, Repository, StatusOptions};
 use regex::Regex;
 use std::env;
-use tico::tico;
 
 fn shorten_path(cwd: &str) -> String {
     let friendly_path = match dirs::home_dir() {
@@ -14,7 +13,7 @@ fn shorten_path(cwd: &str) -> String {
         _ => return String::from(""),
     };
 
-    tico(&friendly_path)
+    friendly_path.to_string()
 }
 
 fn repo_status(r: &Repository, detailed: bool) -> Option<String> {
